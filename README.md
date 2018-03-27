@@ -26,16 +26,13 @@ georef("Rome")
 ```
 # The function is set as default with Pelagios, so it is the same as:
 georef("Rome", source = "pelagios")
-```
 
-
-```
 # output
   lon     lat     name url                                    searched_name
 1 12.4843 41.8926 Roma http://pleiades.stoa.org/places/423025 Rome
 ```
 
-For more options please see the usual R package documentation.
+For more options please see the usual R package documentation. I wrote a [short post](http://editio.github.io/2018/03/27/georeference-geolocation-r-package.html) with an explanation on how to use it together with the leaflet package for R. 
 
 
 ### License:
