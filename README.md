@@ -16,6 +16,7 @@ library(devtools)
 install_github("editio/georeference")
 ```
 
+
 ## Instructions
 
 ```
