@@ -23,7 +23,7 @@
 #' @export
 #' @examples \dontrun{
 #' 
-#' georef("Rome"). The function is set as default with pelagios, so is the same as georef("Rome", source = "pelagios").
+#' georef("Rome"). The function is set as default with pelagios, so it is the same as georef("Rome", source = "pelagios").
 #' 
 #' georef(c("Rome", "Madrid"))
 #' 
