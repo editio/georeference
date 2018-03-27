@@ -31,7 +31,7 @@ georef("Rome", source = "pelagios")
 
 ```
 # output
-  lon     lat     name url 				                 searched_name
+  lon     lat     name url                                    searched_name
 1 12.4843 41.8926 Roma http://pleiades.stoa.org/places/423025 Rome
 ```
 
