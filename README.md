@@ -2,7 +2,7 @@
 
 ## Description: 
 
-**georeference** finds latitude and longitude of places using the Pelagios, GeoNames, and Wikipedia (georeferenced articles stored in the GeoNames database), gazetteers more suitable for historical and literary texts.
+**georeference** finds latitude and longitude of places using the [Pelagios](http://commons.pelagios.org), [GeoNames](http://www.geonames.org), and [Wikipedia](http://www.geonames.org/wikipedia/) (georeferenced articles stored in the GeoNames database), gazetteers more suitable for historical and literary texts.
 
 This package bases on the [geocode()](https://github.com/dkahle/ggmap/blob/master/R/geocode.R) function from the [ggmap package](https://github.com/dkahle/ggmap) by David Kahle.
 

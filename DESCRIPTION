@@ -1,7 +1,7 @@
 Package: georeference
 Version: 1.0.0
 Date: 2018-04-25
-Title: Geocoding with Pelagios and GeoNames.
+Title: Geocoding with Pelagios and GeoNames
 Description: The package reuses the geocode() function from ggmap to add the gazetteers Pelagios, Geonames (and Wikipedia articles stored in the GeoNames database), both more suitable for historical and literary texts. 
 Author: Jose Luis Losada. Based on the geocode function (ggmap package) by David Kahle.
 Maintainer: Jose Luis Losada <losadajoseluis@gmail.com>
