@@ -11,11 +11,11 @@
 #' 
 #' @param location a character vector of place names (e.g. "Rome")
 #'   
-#' @param source "pelagios" for pelagios (default); "geonames" for a simple search in geonames; "geowiki_title" for search just the title in wikipedia database from GeoNames; "geowiki_all" for search in wikipedia database from GeoNames.
+#' @param source "pelagios" for Pelagios (default); "geonames" for a simple search in GeoNames; "geowiki_title" for search just the title in Wikipedia database from GeoNames; "geowiki_all" for search in Wikipedia database from GeoNames.
 #' @param output amount of output: "latlon" (default), "all" (gives a list of everything not just a selected dataframe). 
 #' @param inject character string to add to the url. It is mandatory for "geonames", "geowiki_all", "geowiki_title": inject = username="your_geoname_username" (without blankspaces).
 #' @param language character string to add to the language for "geowiki_all", "geowiki_title": language = "lang=es" (without blankspaces). Default is English.
-#' @param place.pelagios character string to add to the search in pelagios to limit the search just to place:  place.pelagios = "types=place"
+#' @param place.pelagios character string to add to the search in Pelagios to limit the search just to place:  place.pelagios = "types=place"
 #' 
 #' @return If \code{output} is "latlon" it returns a dataframe; If "all", a list.
 #'   
