@@ -213,8 +213,8 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
     
     gcdf <- with(gc$items[[1]], {
       data.frame(
-        lon = NULLtoNA(geo_bounds$min_lon),
-        lat = NULLtoNA(geo_bounds$min_lat),
+        lon = NULLtoNA(geo_bounds$max_lon),
+        lat = NULLtoNA(geo_bounds$max_lat),
         name = NULLtoNA(title),
         url = NULLtoNA(identifier),
         searched_name = location
