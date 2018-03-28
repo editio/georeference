@@ -211,10 +211,13 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
       x
     }
     
+    # Pelagios seems to return only geobounds, not lat&long points. When maxlon = minlon, maxlat = minlat, it results a point, otherways it necessary to convert the geobounds to centroid points (I am just averaging the two points to calculate the midpoint, as in a flat surface...); not nice, for examples like Spain o Russia, but for now...  
+    
+    
     gcdf <- with(gc$items[[1]], {
       data.frame(
-        lon = NULLtoNA(geo_bounds$max_lon),
-        lat = NULLtoNA(geo_bounds$max_lat),
+        lon = NULLtoNA((geo_bounds$max_lon + geo_bounds$min_lon)/2),
+        lat = NULLtoNA((geo_bounds$max_lat + geo_bounds$min_lat)/2),
         name = NULLtoNA(title),
         url = NULLtoNA(identifier),
         searched_name = location
