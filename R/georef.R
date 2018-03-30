@@ -185,24 +185,6 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
   }
 
   
-  if(source == "google") {
-    
-    # format geocoded data
-    NULLtoNA <- function(x){
-      if(is.null(x)) return(NA)
-      x
-    }
-    
-    gcdf <- with(gc$results[[1]], {
-      data.frame(
-        lon = NULLtoNA(geometry$location$lng),
-        lat = NULLtoNA(geometry$location$lat),
-        name = NULLtoNA(address_components[[1]]$short_name), 
-        searched_name = location
-      )
-    })
-  }
-  
   if(source == "pelagios"){
     
     # format geocoded data
@@ -286,17 +268,13 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
   }
 
   # add address
-  if(source == "google"){
-    gcdf$address <- tolower(NULLtoNA(gc$results[[1]]$formatted_address))
-  }
+  
 
   if(output == "latlon" && source == "geonames") return(gcdf[,c("lon","lat", "name", "searched_name", "geonameid")])
   if(output == "latlon" && source == "geowiki_all") return(gcdf[,c("lon","lat", "name", "url", "searched_name")])
   if(output == "latlon" && source == "geowiki_title") return(gcdf[,c("lon","lat", "name", "url", "searched_name")])
   if(output == "latlon" && source == "pelagios") return(gcdf[,c("lon","lat", "name", "url", "searched_name")])
-  if(output == "latlon" && source == "google") return(gcdf[,c("lon","lat", "name", "searched_name")])
   
-  if(output == "latlona" && source == "google") return(gcdf[,c("lon","lat","address")])
 
 
   # parse json when output == "more". To clean up...
