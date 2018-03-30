@@ -167,13 +167,13 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
     if(gc$total == "0") {
       warning(paste("geocode failed with status (total) ", gc$total, ", location = \"",
                     location, "\"", sep = ""), call. = FALSE)
-      return(data.frame(lon = NA, lat = NA))
+      return(data.frame(lon = NA, lat = NA, searched_name = location))
     }
   }
   
   else if(length(gc$geonames) == 0)    {
     warning(paste("geocode failed for location = \"", location, "\"", sep = ""), call. = FALSE) 
-    return(data.frame(lon = NA, lat = NA)) }
+    return(data.frame(lon = NA, lat = NA, searched_name = location)) }
   
   # more than one location found. To do...
 
