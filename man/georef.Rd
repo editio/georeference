@@ -6,20 +6,23 @@
 \usage{
 georef(location, output = c("latlon", "all"), source = c("pelagios",
   "geowiki_all", "geowiki_title", "geonames"), messaging = FALSE,
-  urlonly = FALSE, inject = "", language = "", place.pelagios = "")
+  urlonly = FALSE, inject = "", language = "", place.pelagios = "",
+  bounding.box = "")
 }
 \arguments{
 \item{location}{a character vector of place names (e.g. "Rome")}
 
 \item{output}{amount of output: "latlon" (default), "all" (gives a list of everything not just a selected dataframe).}
 
-\item{source}{"pelagios" for pelagios (default); "geonames" for a simple search in geonames; "geowiki_title" for search just the title in wikipedia database from GeoNames; "geowiki_all" for search in wikipedia database from GeoNames.}
+\item{source}{"pelagios" for Pelagios (default); "geonames" for a simple search in GeoNames; "geowiki_title" for search just the title in Wikipedia database from GeoNames; "geowiki_all" for search in Wikipedia database from GeoNames.}
 
 \item{inject}{character string to add to the url. It is mandatory for "geonames", "geowiki_all", "geowiki_title": inject = username="your_geoname_username" (without blankspaces).}
 
 \item{language}{character string to add to the language for "geowiki_all", "geowiki_title": language = "lang=es" (without blankspaces). Default is English.}
 
-\item{place.pelagios}{character string to add to the search in pelagios to limit the search just to place:  place.pelagios = "types=place"}
+\item{place.pelagios}{character string to add to the search in Pelagios to limit the search just to place:  place.pelagios = "types=place"}
+
+\item{bounding.box}{numeric character string to add to the search in GeoNames to restrict it to a geographic bounding box. It has to be enter in the following order "east,west,north,south" as a comma-separated list of decimal numbers: bounding.box = "43.7,-16.7,59.8,35.4" (~ Europe).}
 }
 \value{
 If \code{output} is "latlon" it returns a dataframe; If "all", a list.
@@ -36,9 +39,9 @@ See Pelagios at
 \examples{
 \dontrun{
 
-georef("Rome"). The function is set as default with pelagios, so is the same as georef("Rome", source = "pelagios").
+georef("Rome"). The function is set as default with pelagios, so it is the same as georef("Rome", source = "pelagios").
 
-georef(c("Rome", "Madrid"))
+georef(c("Rome", "Madrid", "Complutum"))
 
 places = c("Valladolid", "Madrid", "Rome")
 georef(places)
