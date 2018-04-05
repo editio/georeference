@@ -17,8 +17,10 @@
 #' @param language character string to add to the language for "geowiki_all", "geowiki_title": language = "lang=es" (without blankspaces). Default is English.
 #' @param place.pelagios character string to add to the search in Pelagios to limit the search just to place:  place.pelagios = "types=place"
 #' 
-#' @param bounding.box   numeric character string to add to the search in GeoNames to restrict it to a geographic bounding box. It has to be enter in the following order "east,west,north,south" as a comma-separated list of decimal numbers: bounding.box = "43.7,-16.7,59.8,35.4" (~ Europe).
+#' @param bounding.box   numeric character string to add to the search in GeoNames to restrict it to a geographic bounding box. It has to be enter in the following order "east, west, north, south" as a comma-separated list of decimal numbers: bounding.box = "43.7,-16.7,59.8,35.4" (~ Europe).
 #' 
+#' @param bbox   numeric character string to add to the search in Pelagios to restrict it to a geographic bounding box. It has to be enter in the following order "west, east, south, north" as a comma-separated list of decimal numbers: bbox = "-11.22,4.73,34.82,44.52" (~ Peninsular Spain). Different order as those of GeoNames!
+#'
 #' @return If \code{output} is "latlon" it returns a dataframe; If "all", a list.
 #'   
 #' @author Jose Luis Losada \email{losadajoseluis@gmail.com}, mostly reusing and directly based on the geocode function (ggmap) by David Kahle.
@@ -45,7 +47,7 @@
 #'
 #'
 
-georef <- function(location, output = c("latlon", "all"), source = c("pelagios", "geowiki_all", "geowiki_title", "geonames"), messaging = FALSE, urlonly = FALSE, inject = "", language = "", place.pelagios = "", bounding.box = ""
+georef <- function(location, output = c("latlon", "all"), source = c("pelagios", "geowiki_all", "geowiki_title", "geonames"), messaging = FALSE, urlonly = FALSE, inject = "", language = "", place.pelagios = "", bounding.box = "",bbox = ""
 ){
 
   # basic parameter check
@@ -67,9 +69,9 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
 
     # geocode ply and out
     if(output == "latlon"){
-      return(ldply(as.list(location), georef, output = output, source = source, inject = inject, language = language, place.pelagios = place.pelagios, bounding.box = bounding.box))
+      return(ldply(as.list(location), georef, output = output, source = source, inject = inject, language = language, place.pelagios = place.pelagios, bounding.box = bounding.box, bbox = bbox))
     } else { # output = all
-      return(llply(as.list(location), georef, output = output, source = source, inject = inject, language = language, place.pelagios = place.pelagios, bounding.box = bounding.box))
+      return(llply(as.list(location), georef, output = output, source = source, inject = inject, language = language, place.pelagios = place.pelagios, bounding.box = bounding.box, bbox = bbox))
     }
   }
 
@@ -117,6 +119,8 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
   if(place.pelagios != "") url_string <- paste(url_string, place.pelagios, sep = "&")
   if(bounding.box != "") coord = read.table(text = bounding.box, sep = ",", as.is = TRUE)
   if(bounding.box != "") url_string <- paste0(url_string, sep = "&", sprintf("east="), coord$V1, sep = "&", sprintf("west="), coord$V2, sep = "&", sprintf("north="), coord$V3, sep = "&", sprintf("south="), coord$V4)
+  if(bbox != "") coord = read.table(text = bbox, sep = ",", as.is = TRUE)
+  if(bbox != "") url_string <- paste0(url_string, sep = "&", sprintf("bbox="), coord$V1, sep = ",", coord$V2, sep = ",", coord$V3, sep = ",", coord$V4)
   
   # encode
   url_string <- URLencode( enc2utf8(url_string) )

@@ -7,7 +7,7 @@
 georef(location, output = c("latlon", "all"), source = c("pelagios",
   "geowiki_all", "geowiki_title", "geonames"), messaging = FALSE,
   urlonly = FALSE, inject = "", language = "", place.pelagios = "",
-  bounding.box = "")
+  bounding.box = "", bbox = "")
 }
 \arguments{
 \item{location}{a character vector of place names (e.g. "Rome")}
@@ -22,7 +22,9 @@ georef(location, output = c("latlon", "all"), source = c("pelagios",
 
 \item{place.pelagios}{character string to add to the search in Pelagios to limit the search just to place:  place.pelagios = "types=place"}
 
-\item{bounding.box}{numeric character string to add to the search in GeoNames to restrict it to a geographic bounding box. It has to be enter in the following order "east,west,north,south" as a comma-separated list of decimal numbers: bounding.box = "43.7,-16.7,59.8,35.4" (~ Europe).}
+\item{bounding.box}{numeric character string to add to the search in GeoNames to restrict it to a geographic bounding box. It has to be enter in the following order "east, west, north, south" as a comma-separated list of decimal numbers: bounding.box = "43.7,-16.7,59.8,35.4" (~ Europe).}
+
+\item{bbox}{numeric character string to add to the search in Pelagios to restrict it to a geographic bounding box. It has to be enter in the following order "west, east, south, north" as a comma-separated list of decimal numbers: bbox = "-11.22,4.73,34.82,44.52" (~ Peninsular Spain). Different order as those of GeoNames!}
 }
 \value{
 If \code{output} is "latlon" it returns a dataframe; If "all", a list.
