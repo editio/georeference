@@ -59,11 +59,11 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
   if(length(location) > 1){
     # set limit
      { # Not sure about the limits in geonames and pelagios, but set in order to make it work
-      limit <- "3000"
+      limit <- "4000"
     }
 
     # message/stop as neeeded
-    s <- sprintf("limit of request is set to 3000", limit)
+    s <- sprintf("limit of request is set to 4000", limit)
     if(length(location) > as.numeric(limit)) stop(s, call. = FALSE)
     if(length(location) > 200 && messaging) message(paste("Reminder", s, sep = " : "))
 
@@ -86,7 +86,7 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
   
    if(source == "pelagios"){
     url_string <- paste0(
-      sprintf("http://pelagios.org/peripleo/search?query="),
+      sprintf("http://peripleo.pelagios.org/peripleo/search?query="),
       posturl
     )
   }
@@ -179,6 +179,18 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
     }
   }
   
+  # Pelagios keeps adding more gazetteers, therefore the first result often comes from, i.e., http://syriaca.org, which does not provide sometimes lat&long. This is just a patch to keept the function running, but the general result with pelagios is now much worse.
+  
+  if(source == "pelagios") {
+    
+    if(length(gc$items[[1]]$geo_bounds) == 0) {
+      warning(paste("geocode failed: gazetteer with no geobounds", ", location = \"", location, "\"", sep = ""), call. = FALSE)
+      return(data.frame(lon = NA, lat = NA, searched_name = location))
+    }
+  }
+  
+  
+  
   else if(length(gc$geonames) == 0)    {
     warning(paste("geocode failed for location = \"", location, "\"", sep = ""), call. = FALSE) 
     return(data.frame(lon = NA, lat = NA, searched_name = location)) }
@@ -200,10 +212,9 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
       if(is.null(x)) return(NA)
       x
     }
-    
+  
     # Pelagios seems to return only geobounds, not lat&long points. When maxlon = minlon, maxlat = minlat, it results a point, otherways it necessary to convert the geobounds to centroid points (I am just averaging the two points to calculate the midpoint, as in a flat surface...); not nice, for examples like Spain o Russia, but for now...  
-    
-    
+
     gcdf <- with(gc$items[[1]], {
       data.frame(
         lon = NULLtoNA((geo_bounds$max_lon + geo_bounds$min_lon)/2),
