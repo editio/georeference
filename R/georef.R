@@ -84,10 +84,12 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
   # old API: http://pelagios.org/peripleo
   # new api http://peripleo.pelagios.org/peripleo
   
+  # Datasets separated by comma.For now I don't allow to choose. Limited to pleiades,ToposText,dare-20160328,iDAI,geonames. Geonames in pelagios is not completed in comparation to the live version. To check the different datasets names: http://peripleo.pelagios.org/ui#q=Roma&datasets=pleiades&filters=true
+  
    if(source == "pelagios"){
     url_string <- paste0(
       sprintf("http://peripleo.pelagios.org/peripleo/search?query="),
-      posturl
+      posturl, "&datasets=pleiades,ToposText,dare-20160328,iDAI,geonames"
     )
   }
   
