@@ -3,11 +3,11 @@
 ## Description: 
 
 **georeference** finds latitude and longitude of places using the [Pelagios](http://commons.pelagios.org), [GeoNames](http://www.geonames.org), and [Wikipedia](http://www.geonames.org/wikipedia/) (georeferenced articles stored in the GeoNames database), gazetteers more suitable for historical and literary texts. 
-Pelagios is not actually a gazetteer per se, but an infrastructure of Linked Open Geodata in the Humanities, that enables, for instance, search across different gazetteers; **georeference** limits the Pelagios datasets to the gazetteers pleiades, ToposText, DARE, iDAI and GeoNames. 
+Pelagios is not actually a gazetteer per se, but an infrastructure of Linked Open Geodata in the Humanities, that enables, for instance, searching across different gazetteers; **georeference** limits the Pelagios datasets to the gazetteers Pleiades, ToposText, DARE, iDAI, and GeoNames. 
 
 This package bases on the [geocode()](https://github.com/dkahle/ggmap/blob/master/R/geocode.R) function from the [ggmap package](https://github.com/dkahle/ggmap) by David Kahle.
 
-## Installation 
+## Installation: 
 
 You can install the development version from Github, via the package `devtools`
 
@@ -18,7 +18,7 @@ install_github("editio/georeference")
 ```
 
 
-## Instructions
+## Instructions:
 
 ```
 library(georeference)
