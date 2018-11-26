@@ -16,7 +16,7 @@ georef(location, output = c("latlon", "all"), source = c("pelagios",
 
 \item{source}{"pelagios" for Pelagios (default); "geonames" for a simple search in GeoNames; "geowiki_title" for search just the title in Wikipedia database from GeoNames; "geowiki_all" for search in Wikipedia database from GeoNames.}
 
-\item{inject}{character string to add to the url. It is mandatory for "geonames", "geowiki_all", "geowiki_title": inject = username="your_geoname_username" (without blankspaces).}
+\item{inject}{character string to add to the url. It is mandatory for "geonames", "geowiki_all", "geowiki_title": inject = "username=your_geoname_username" (without blankspaces).}
 
 \item{language}{character string to add to the language for "geowiki_all", "geowiki_title": language = "lang=es" (without blankspaces). Default is English.}
 

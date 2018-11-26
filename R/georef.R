@@ -13,7 +13,7 @@
 #'   
 #' @param source "pelagios" for Pelagios (default); "geonames" for a simple search in GeoNames; "geowiki_title" for search just the title in Wikipedia database from GeoNames; "geowiki_all" for search in Wikipedia database from GeoNames.
 #' @param output amount of output: "latlon" (default), "all" (gives a list of everything not just a selected dataframe). 
-#' @param inject character string to add to the url. It is mandatory for "geonames", "geowiki_all", "geowiki_title": inject = username="your_geoname_username" (without blankspaces).
+#' @param inject character string to add to the url. It is mandatory for "geonames", "geowiki_all", "geowiki_title": inject = "username=your_geoname_username" (without blankspaces).
 #' @param language character string to add to the language for "geowiki_all", "geowiki_title": language = "lang=es" (without blankspaces). Default is English.
 #' @param place.pelagios character string to add to the search in Pelagios to limit the search just to place:  place.pelagios = "types=place"
 #' 
@@ -88,7 +88,7 @@ georef <- function(location, output = c("latlon", "all"), source = c("pelagios",
   
    if(source == "pelagios"){
     url_string <- paste0(
-      sprintf("http://peripleo.pelagios.org/peripleo/search?query="),
+      sprintf("https://peripleo.pelagios.org/peripleo/search?query="),
       posturl, "&datasets=pleiades,ToposText,dare-20160328,iDAI,geonames"
     )
   }
