@@ -1,4 +1,6 @@
-# georeference: R package for georeferencing places using GeoNames and Pelagios
+# georeference: R package for georeferencing places using GeoNames ~~and Pelagios~~.
+
+**Update**: The Peripleo API from Pelagios seems to be discontinued, so the default function will not work.  The package still works for Geonames
 
 ## Description: 
 
@@ -26,7 +28,7 @@ georef("Rome")
 ```
 ```
 # The function is set as default with Pelagios, so it is the same as:
-georef("Rome", source = "pelagios")
+g
 
 # output
   lon     lat     name url                                    searched_name
